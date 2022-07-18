@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./index.css";
+import React, { useContext } from "react";
+import { useGlobalContext } from "./context";
+import { MdCancel } from "react-icons/md";
+import { BiSmile } from "react-icons/bi";
 function App() {
+  const { openModal } = useGlobalContext();
+  const { isModalOpen, closeModal } = useGlobalContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <button
+        className="bg-black text-white text-2xl mt-16 ml-20"
+        onClick={openModal}
+      >
+        Eloghosa, Press me
+      </button>
+
+      <div
+        className={`${
+          isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
+        }`}
+      >
+        <div className="modal-container">
+          <h3 className="">
+            Do you know how cute you look? Now smile for me...... *too cheesy ?
+          </h3>
+          <button className="close-modal-btn" onClick={closeModal}>
+            <MdCancel />
+          </button>
+        </div>
+      </div>
+    </>
   );
 }
 
