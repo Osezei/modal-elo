@@ -1,35 +1,17 @@
 import "./index.css";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import React, { useContext } from "react";
-import { useGlobalContext } from "./context";
-import { MdCancel } from "react-icons/md";
-import { BiSmile } from "react-icons/bi";
+import Hero from "./components/Hero";
+import { Fade } from "react-awesome-reveal";
 function App() {
-  const { openModal } = useGlobalContext();
-  const { isModalOpen, closeModal } = useGlobalContext();
   return (
-    <>
-      <button
-        className="bg-black text-white text-2xl mt-16 ml-20"
-        onClick={openModal}
-      >
-        Eloghosa, Press me
-      </button>
-
-      <div
-        className={`${
-          isModalOpen ? "modal-overlay show-modal" : "modal-overlay"
-        }`}
-      >
-        <div className="modal-container">
-          <h3 className="">
-            Do you know how cute you look? Now smile for me...... *too cheesy ?
-          </h3>
-          <button className="close-modal-btn" onClick={closeModal}>
-            <MdCancel />
-          </button>
-        </div>
-      </div>
-    </>
+    <section>
+      <Fade duration={3000}>
+        <Navbar />
+        <Footer />
+      </Fade>
+    </section>
   );
 }
 
